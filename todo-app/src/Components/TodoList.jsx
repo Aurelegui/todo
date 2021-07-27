@@ -1,24 +1,39 @@
-import React, { useState } from "react";
-import TodoForm from "./TodoForm";
+import React from "react";
+import Todo from "./Todo";
 
-function TodoList() {
-  const [todos, setTodos] = useState([]);
+function TodoList({ todos, setTodos }) {
+  // const [textInput, textInputState] = useState('');
 
-  const addTodo = (todo) => {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
-      return;
-    }
-
-    const newTodos = [todo, ...todos];
-
-    setTodos(newTodos);
-    console.log(newTodos);
-  };
-
+  console.log(todos);
   return (
-    <div>
-      <h1>Hello everyone</h1>
-      <TodoForm onSubmit={addTodo} />
+    <div className="">
+      {todos.map((todo) => (
+        <Todo
+          setTodos={setTodos}
+          todos={todos}
+          text={todo.text}
+          key={todo.id}
+          todo={todo}
+        />
+      ))}
+    
+      <div className="grid grid-flow-col auto-cols-max justify-center">
+        <div className="p-1 border">
+          <span>items left</span>
+        </div>
+        <div className="p-1 ml-1 border">
+          <button onClick={() => {}}>All</button>
+        </div>
+        <div className="p-1 ml-1 border">
+          <button onClick={() => {}}>Active</button>
+        </div>
+        <div className="p-1 ml-1 border">
+          <button onClick={() => {}}>Completed</button>
+        </div>
+        <div className="p-1 ml-1 border">
+          <button onClick={() => {}}>Clear Completed</button>
+        </div>
+      </div>
     </div>
   );
 }
