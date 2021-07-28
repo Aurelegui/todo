@@ -1,14 +1,23 @@
 import React from "react";
 
-function Todo({text, id, isActive, completed, todo, todos, setTodos}) {
+function Todo({ text, id, isActive, completed, todo, todos, setTodos }) {
 
   const deleteHandler = () => {
     setTodos(todos.filter(el => el.id !== todo.id))
   };
 
+  
   const completedHandler = () => {
-    setTodos(todos.map(el => el.completed !== todo.id))
-  };
+    setTodos(todos.map(el => {
+      if (el.id === todo.id) {
+        return {
+          ...el, completed: !el.completed , isActive: !el.isActive
+        }
+      }
+      return el;
+    }
+    ))
+  }
 
   return (
     <div>

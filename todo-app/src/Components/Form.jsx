@@ -8,7 +8,9 @@ function Form({ setInputText, setTodos, todos, inputText }) {
     console.log(e.target.value);
     setInputText(e.target.value);
   };
+
   // prevent from refreshing page when pressing enter
+  // Fill Todos with data
   const submitTodoHandler = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
