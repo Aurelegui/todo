@@ -1,11 +1,9 @@
 import React from "react";
-import uuid from 'react-uuid'
-
+import uuid from "react-uuid";
 
 function Form({ setInputText, setTodos, todos, inputText }) {
   // Sets text when change input
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
     setInputText(e.target.value);
   };
 
@@ -14,9 +12,11 @@ function Form({ setInputText, setTodos, todos, inputText }) {
   const submitTodoHandler = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      setTodos([...todos, { text: inputText, isActive: true, completed: false, id: uuid() }
+      setTodos([
+        ...todos,
+        { text: inputText, isActive: true, completed: false, id: uuid() },
       ]);
-      setInputText('');
+      setInputText("");
     }
   };
 
