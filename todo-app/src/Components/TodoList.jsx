@@ -1,15 +1,10 @@
 import React from "react";
 import Todo from "./Todo";
+import Box from "@material-ui/core/Box";
 
-function TodoList({
-  todos,
-  setTodos,
-  filteredTodos,
-  setFilteredTodos,
-}) {
-
+function TodoList({ todos, setTodos, filteredTodos, setFilteredTodos }) {
   return (
-    <div className="">
+    <Box>
       {filteredTodos.map((todo) => (
         <Todo
           setTodos={setTodos}
@@ -21,7 +16,7 @@ function TodoList({
           filteredTodos={filteredTodos}
         />
       ))}
-    </div>
+    </Box>
   );
 }
 

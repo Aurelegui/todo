@@ -1,6 +1,13 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
-function Todo({ text, id, isActive, completed, todo, todos, setTodos }) {
+function Todo({ text, todo, todos, setTodos }) {
+
+  const onChangeHandler = (e) => {
+    console.log(e.target.value)
+  }
+
   const deleteHandler = () => {
     setTodos(todos.filter((el) => el.id !== todo.id));
   };
@@ -22,14 +29,17 @@ function Todo({ text, id, isActive, completed, todo, todos, setTodos }) {
 
   return (
     <div>
-      <input
-        className={`flex items-center justify-center 
-        ${todo.completed ? "text-gray-400" : "text-current"}`}
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        className={`flex items-center 
+          ${todo.completed ? "text-gray-400" : "text-current"}`}
         type="text"
         defaultValue={text}
+        onChange={onChangeHandler}
       />
-      <button onClick={deleteHandler}>Del</button>
-      <button onClick={completedHandler}>Done</button>
+      <Button variant="contained" color="primary" onClick={deleteHandler}>Del</Button>
+      <Button variant="contained" color="primary" onClick={completedHandler}>Done</Button>
     </div>
   );
 }
